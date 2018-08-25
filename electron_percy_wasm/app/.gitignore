@@ -1,0 +1,4 @@
+*.wasm
+*.bundle.js
+bundle.js
+electron_percy_wasm.js
