@@ -1,7 +1,10 @@
 [package]
-name = "electron_percy_wasm"
+name = "app"
 version = "0.1.0"
 authors = ["Bradlee Speice <bradlee@speice.io>"]
+
+[lib]
+crate-type = ["cdylib"]
 
 [dependencies]
 percy-webapis = "0.0.1"
