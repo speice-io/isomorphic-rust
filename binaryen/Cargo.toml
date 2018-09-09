@@ -1,0 +1,15 @@
+[package]
+authors = ["Bradlee Speice"]
+categories = ["wasm"]
+description = "A no-framework WASM Electron app"
+license = "Apache-2.0/MIT"
+name = "stdweb_electron"
+readme = "./README.md"
+repository = "https://github.com/rustwasm/rust-webpack-template"
+version = "0.1.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+stdweb = "0.4"
