@@ -1,5 +1,5 @@
 [package]
-name = "electron_percy_wasm"
+name = "percy"
 version = "0.1.0"
 authors = ["Bradlee Speice <bradlee@speice.io>"]
 
