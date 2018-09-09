@@ -3,9 +3,9 @@
     "productName": "electron_percy_wasm",
     "version": "1.0.0",
     "description": "My Electron application description",
-    "main": "app/index.js",
+    "main": "dist/index.js",
     "scripts": {
-        "prestart": "./build_wasm_bundle.sh",
+        "prestart": "./build.sh",
         "start": "electron-forge start",
         "package": "electron-forge package",
         "make": "electron-forge make",
