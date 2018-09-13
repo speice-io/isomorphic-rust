@@ -23,5 +23,5 @@ cp "$DIR/WasmMainTemplatePlugin.patched.js" "$DIR/node_modules/webpack/lib/wasm/
 
 cargo +nightly build --target=wasm32-unknown-unknown && \
     wasm-bindgen "$WASM_DIR/debug/$WASM_NAME.wasm" --out-dir "$APP_DIR" --no-typescript && \
-    # Still doesn't work with mode=production, not sure why
+    # --mode=production requires https://github.com/webpack/webpack/pull/7732
     "$DIR/node_modules/webpack-cli/bin/cli.js" --mode=production "$APP_DIR/app_loader.js" -o "$APP_DIR/bundle.js"
