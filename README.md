@@ -9,9 +9,15 @@ It's 2020, and a lot has changed.
 - The previous [`percy`](https://github.com/chinedufn/percy) example has been removed. While work
   continues on the project, there haven't been any releases.
 - `binaryen` has been removed.
+- The "minimal" (wasm-bindgen only) example has been removed. It's easy enough to start with one of
+  the framework examples and remove it if truly desired.
 - A new framework [`seed`](https://github.com/seed-rs/seed) as been added as an example.
 - The `stdweb` example has been freshened up:
+  - It actually runs now.
   - Use `#[wasm_bindgen(start)]` to remove the app loader script
   - Don't use `innerHTML`, just set the text content directly.
+- The `yew` example has been freshened up:
+  - All the changes that were made to `stdweb`; actually runs, removed app loader
+  - Uses an ever-so-slightly more realistic counter example.
 
 Each app is a starter example, and can be run with `yarn install && yarn start`.

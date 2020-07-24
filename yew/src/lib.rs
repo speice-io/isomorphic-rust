@@ -1,40 +1,68 @@
-extern crate wasm_bindgen;
-#[macro_use]
-extern crate yew;
+#![recursion_limit = "256"]
 
+use js_sys::Date;
 use wasm_bindgen::prelude::*;
-use yew::prelude::*;
+use yew::services::ConsoleService;
+use yew::{html, Component, ComponentLink, Html, ShouldRender};
 
-struct Model {}
-enum Msg {
+pub struct Model {
+    link: ComponentLink<Self>,
+    value: i64,
+}
+
+pub enum Msg {
+    Increment,
+    Decrement,
 }
 
 impl Component for Model {
-
     type Message = Msg;
     type Properties = ();
 
-    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        Model {}
+    fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
+        Model { link, value: 0 }
     }
 
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        match msg {
+            Msg::Increment => {
+                self.value += 1;
+                ConsoleService::log("plus one");
+            }
+            Msg::Decrement => {
+                self.value -= 1;
+                ConsoleService::log("minus one");
+            }
+        }
+        true
+    }
+
+    fn change(&mut self, _: Self::Properties) -> ShouldRender {
         false
     }
-}
 
-impl Renderable<Model> for Model {
-    fn view(&self) -> Html<Self> {
+    fn view(&self) -> Html {
         html! {
-            <p>{ "IT'S ALIVE" }</p>
+            <div>
+                <nav class="menu">
+                    <button onclick=self.link.callback(|_| Msg::Increment)>
+                        { "Increment" }
+                    </button>
+                    <button onclick=self.link.callback(|_| Msg::Decrement)>
+                        { "Decrement" }
+                    </button>
+                    <button onclick=self.link.batch_callback(|_| vec![Msg::Increment, Msg::Increment])>
+                        { "Increment Twice" }
+                    </button>
+                </nav>
+                <p>{ self.value }</p>
+                <p>{ Date::new_0().to_string().as_string().unwrap() }</p>
+            </div>
         }
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(start)]
 pub fn main() {
-    yew::initialize();
-    let app: App<Model> = App::new();
-    app.mount_to_body();
-    yew::run_loop();
+    yew::start_app::<Model>();
 }
