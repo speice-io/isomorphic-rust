@@ -1,0 +1,11 @@
+[package]
+name = "seed"
+version = "0.1.0"
+authors = ["Bradlee Speice <bradlee@speice.io>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+seed = "0.7"
