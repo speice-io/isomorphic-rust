@@ -1,7 +1,3 @@
-#[macro_use]
-extern crate cfg_if;
-
-extern crate wasm_bindgen;
 use wasm_bindgen::prelude::*;
 
 cfg_if! {
